@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-card">
+        <h3
+        class="slds-section__title slds-theme_shade slds-var-m-top_small slds-var-m-bottom_x-small slds-var-p-horizontal_small"
+    >
+        Description Information {recordId} {error} {data}
+    </h3>
+        <template lwc:if={markers.length}>
+            <lightning-map
+                map-markers={markers}
+                zoom-level={zoomLevel}
+            ></lightning-map>
+        </template>
+        <template lwc:else>
+          
+              <c-error-panel friendly-message="No address to map"></c-error-panel>
+        </template>
+        <template lwc:if={error}>
+            <c-error-panel
+                friendly-message="Error retrieving map data"
+                errors={error}
+            ></c-error-panel>
+        </template>
+    </div>
+</template>
